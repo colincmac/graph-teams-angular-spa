@@ -1,0 +1,245 @@
+@keyframes message-sending {
+  0% {
+      left: -33%;
+  }
+  100% {
+      left: 100%;
+  }
+}
+
+.progress-bar {
+  line-height: 20px;
+  color: #242424;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  height: 4px;
+  background-color: #e6e6e6;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: block;
+  width: 100%;
+  .bar {
+    background-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(24, 90, 189, 1) 35%, rgba(71, 207, 250, 1) 70%, rgba(180, 124, 248, 1) 92%,  rgba(0,0,0,0));
+    position: relative;
+    height: 100%;
+    background-color: transparent;
+    max-width: 33%;
+    animation-duration: 3s;
+    animation-name: message-sending;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+.teams-message {
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin: 8px 4px;
+  font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+}
+
+.teams-message:hover {
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  display: none;
+}
+
+#messagesGet {
+  overflow: auto;
+  display: block;
+}
+
+.root {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  overflow: hidden;
+  z-index: 1;
+  max-width: 41.25rem;
+}
+
+.chat-screen {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  flex-grow: 1;
+  max-height: 100%;
+  overflow: auto;
+  position: relative;
+  align-self: center;
+}
+.chat-messages {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 600px;
+  padding-top: 0.8rem;
+  padding-right: 0.625rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.625rem;
+  margin: 0;
+}
+
+.chat-item {
+  padding-top: 1rem;
+  position: relative;
+  padding-bottom: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.chat-item .from {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.625rem;
+  margin-left: 0.625rem;
+  flex-shrink: 0;
+  flex-grow: 0;
+  align-self: flex-start;
+  border-radius: 50%;
+  background-color: rgb(243, 242, 241);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-item-header {
+  margin-bottom: 2px;
+  align-items: baseline;
+  display: flex;
+  color: #616161;
+  column-gap: 8px;
+  flex-direction: row;
+  width: 100%;
+}
+
+.chat-item-header-authorname {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.chat-item-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.chat-item-justify-right {
+  justify-content: flex-end;
+}
+
+.chat-item-content-avatar {
+  width: 24px;
+  margin-top: 2px;
+}
+
+.chat-item-content-body {
+  max-width: 100%;
+  padding-bottom: .4375rem;
+  padding-top: .3125rem;
+  padding-left: .3125rem;
+  padding-right: .3125rem;
+  min-width: 6.25rem;
+}
+
+.message {
+  line-height: 1.4286;
+  max-width: 100%;
+  word-wrap: break-word;
+  display: flex;
+  border-radius: 0.25rem;
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 6px;
+}
+
+.my-message {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.message-content {
+  color: rgb(50, 49, 48);
+  display: block;
+  padding-bottom: .4375rem;
+  padding-top: .3125rem;
+  padding-left: .3125rem;
+  padding-right: .3125rem;
+  min-width: 6.25rem;
+  background-color: rgb(243, 242, 241);
+
+  position: relative;
+}
+
+.my-message-content {
+  background-color: rgb(199, 224, 244);
+
+}
+
+.attached-widget-container {
+  max-width: 100%;
+}
+.attached-widget-container-actions {
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 32px;
+}
+.sendbox-container {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  max-width: 41.25rem;
+  align-self: center;
+}
+.sendbox {
+  height: 36px;
+}
+
+.sendbox-button {
+  outline: transparent;
+  border: none;
+  width: 2.25rem;
+  margin: auto;
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+  padding-right: 4px;
+  padding-left: 4px;
+  text-align: center;
+  position: relative;
+  background-color: transparent;
+  &:hover {
+    background-color: transparent;
+    border: none;
+  }
+}
+.sendbox-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: auto;
+  color: rgb(161, 159, 157);
+  display: inline-block;
+  &:hover {
+    color: rgb(91, 95, 199);
+  }
+}

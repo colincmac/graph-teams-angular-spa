@@ -1,0 +1,49 @@
+<div class="widget-container mat-elevation-z2">
+    <div class="widget-toolbar mat-elevation-z2">
+        <span class="widget-toolbar-action">
+            <button [disabled]="!isLoaded" mat-button [matMenuTriggerFor]="menu">
+                <mat-icon *ngIf="isLoaded">more_vert</mat-icon>
+                <mat-spinner style="height: 32px; width:32px;" *ngIf="!isLoaded"></mat-spinner>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onChatClick()">
+                    <mat-icon>chat</mat-icon>
+                    <span>Share via Teams</span>
+                </button>
+            </mat-menu>
+        </span>
+    </div>
+    <div #widget class="widget-content">
+        <span class="widget-content-item">
+            <mat-table  #table [dataSource]="gridDataSource">
+                <ng-container matColumnDef="form">
+                  <mat-header-cell *matHeaderCellDef> Form </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.form}} </mat-cell>
+                </ng-container>
+        
+                <ng-container matColumnDef="status">
+                  <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+                </ng-container>
+        
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+            </span>
+        <span class="widget-content-item">
+            <ngx-charts-pie-chart
+            [scheme]="colorScheme"
+            [results]="pieData"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [legendPosition]="legendPosition"
+            [labels]="showLabels"
+            legendTitle=""
+            [trimLabels]="false"
+            [view]="view"
+            [animations]="showAnimations"
+            >
+            </ngx-charts-pie-chart>
+        </span>
+      </div>
+</div>

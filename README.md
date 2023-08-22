@@ -1,0 +1,87 @@
+---
+page_type: sample
+description: This sample demonstrates how to use the Microsoft Graph JavaScript SDK and the Microsoft Graph Toolkit to add Teams Chat to your app.
+products:
+- ms-graph
+- microsoft-graph-teams-api
+languages:
+- typescript
+---
+
+# Microsoft Graph sample Angular app
+
+[![Node.js CI](https://github.com/microsoftgraph/msgraph-sample-angularspa/actions/workflows/node.js.yml/badge.svg)](https://github.com/microsoftgraph/msgraph-sample-angularspa/actions/workflows/node.js.yml) ![License.](https://img.shields.io/badge/license-MIT-green.svg)
+
+This sample demonstrates how to use the Microsoft Graph JavaScript SDK to work with Team's from Angular single-page applications.
+
+**This sample doesn't follow Microsoft guidelines on polling (https://learn.microsoft.com/en-us/graph/api/resources/teams-api-overview?view=graph-rest-1.0#polling-requirements)**
+
+In high load scenarios, the client may be throttled polling for new Messages for a specific Chat. Delta queries aren't available for Chats (only Channels), so a (Subscription)[https://learn.microsoft.com/en-us/graph/teams-change-notification-in-microsoft-teams-overview] for change notifications and server-side webhook is necessary to get real-time updates. 
+
+This could be implemented varios ways.
+ * Use Serverless SignalR with Azure Functions to relay message updates in real-time using websockets. An example of this can be found in the Graph Notification Broker repository below.
+ * Use the [Graph Notification Broker](https://github.com/microsoft/GraphNotificationBroker#graph-notification-broker)
+ * Incorporate the [Microsoft Graph Toolkit Chat Component](https://github.com/microsoftgraph/microsoft-graph-toolkit/tree/next/mgt-chat) once it's out of Private Preview.
+
+For more information about Graph API limits with Teams resources see:
+ * [Microsoft Teams service throttling limits](https://learn.microsoft.com/en-us/graph/throttling-limits#microsoft-teams-service-limits)
+ * [Set up notifications for changes in resource data](https://learn.microsoft.com/en-us/graph/webhooks?context=graph%2Fapi%2F1.0&view=graph-rest-1.0)
+ * [Change notifications for Microsoft Teams resources](https://learn.microsoft.com/en-us/graph/teams-change-notification-in-microsoft-teams-overview)
+ * [Get change notifications for messages in Teams channels and chats using Microsoft Graph](https://learn.microsoft.com/en-us/graph/teams-changenotifications-chatmessage)
+
+## Prerequisites
+
+To run the completed project in this folder, you need the following:
+
+- [Node.js](https://nodejs.org) installed on your development machine. If you do not have Node.js, visit the previous link for download options. (**Note:** This tutorial was written with Node version 16.4.2. The steps in this guide may work with other versions, but that has not been tested.)
+- [Angular CLI](https://cli.angular.io/) installed on your development machine.
+- Either a personal Microsoft account with a mailbox on Outlook.com, or a Microsoft work or school account.
+
+If you don't have a Microsoft account, there are a couple of options to get a free account:
+
+- You can [sign up for a new personal Microsoft account](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=12&ct=1454618383&rver=6.4.6456.0&wp=MBI_SSL_SHARED&wreply=https://mail.live.com/default.aspx&id=64855&cbcxt=mai&bk=1454618383&uiflavor=web&uaid=b213a65b4fdc484382b6622b3ecaa547&mkt=E-US&lc=1033&lic=1).
+- You can [sign up for the Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program) to get a free Teams subscription.
+
+## Register a web application with the Azure Active Directory admin center
+
+1. Open a browser and navigate to the [Azure Active Directory admin center](https://aad.portal.azure.com). Login using a **personal account** (aka: Microsoft Account) or **Work or School Account**.
+
+1. Select **Azure Active Directory** in the left-hand navigation, then select **App registrations** under **Manage**
+
+1. Select **New registration**. On the **Register an application** page, set the values as follows.
+
+    - Set **Name** to `Angular Graph Sample`.
+    - Set **Supported account types** to **Accounts in any organizational directory and personal Microsoft accounts**.
+    - Under **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and set the value to `http://localhost:4200`.
+
+1. Choose **Register**. On the **Angular Graph Tutorial** page, copy the value of the **Application (client) ID** and save it, you will need it in the next step.
+
+## Configure the sample
+
+1. Rename the `environment.example.ts` file to `environment.ts`.
+1. Edit the `environment.ts` file and make the following changes.
+1. Replace `<client-id>` with the **Application Id** you got from the App Registration Portal.
+1. Replace `<tenant-id>` with your provided **Tenant Id**.
+1. In your command-line interface (CLI), navigate to this directory and run the following command to install requirements.
+
+    ```Shell
+    npm install
+    ```
+
+## Run the sample
+
+1. Run the following command in your CLI to start the application.
+
+    ```Shell
+    npm start
+    ```
+
+1. Open a browser and browse to `http://localhost:4200`.
+
+## Code of conduct
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

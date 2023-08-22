@@ -1,0 +1,48 @@
+<!-- <div>
+    <fluent-search 
+        ngDefaultControl
+        autocomplete="off"
+        appearance="outline"
+        id="people-picker-input"
+        role="combobox"
+        [aria-expanded]="flyoutOpened"
+        [(ngModel)]="userInput"
+        (ngModelChange)="handleUserInput($event)"
+        (click)="handleInputClick"
+    >
+    </fluent-search>
+    <div #flyout class="flyout" *ngIf="flyoutOpened">
+        <fluent-card
+            tabindex="0"
+            slot="flyout"
+            class="flyout-root"
+            class="custom">
+            <div *ngIf="isLoading" class="message-parent">
+                <div aria-label="loadingMessage" class="loading-text">
+                  "Loading..."
+                </div>
+            </div>
+            <div *ngIf="!isLoading && foundPeople.length <= 0"  class="message-parent">
+                <div aria-label="noResultsFoundMessage" class="search-error-text">
+                  "No results found"
+                </div>
+            </div>
+            <ul
+                *ngIf="!isLoading && foundPeople.length > 0"
+                id="suggestions-list"
+                class="searched-people-list"
+                role="listbox"
+                aria-live="polite"
+            >
+                <li *ngFor="let person of foundPeople"
+                    id="{{person.id}}"
+                    role="option"
+                    class="searched-people-list-result"
+                    (click)="handleSuggestionClick(person)"
+                >
+                    {{person.displayName}}
+                </li>
+            </ul>
+       </fluent-card>
+    </div>
+</div> -->

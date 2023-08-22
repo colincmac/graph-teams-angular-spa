@@ -1,0 +1,17 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<app-nav-bar></app-nav-bar>
+<main role="main" class="main-container">
+  <app-alerts></app-alerts>
+  <router-outlet></router-outlet>
+  <div class="floating-chat" [class.expand]="chatOpen" [class.mat-elevation-z2]="chatOpen">
+
+    <button class="toggle-button" mat-mini-fab aria-label="Chat with your team" (click)="toggleChat()">
+        <mat-icon>chat</mat-icon>
+    </button>
+    <div class="chat-wrapper" [class.enter]="chatOpen"  >
+        <app-chat class="chat"></app-chat>
+    </div>
+  </div>
+</main>

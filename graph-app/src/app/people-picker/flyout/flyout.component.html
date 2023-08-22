@@ -1,0 +1,42 @@
+<div class="flyout">
+    <fluent-card
+        tabindex="0"
+        slot="flyout"
+        class="flyout-root"
+        (@wheel)="(e: WheelEvent) => this.handleSectionScroll(e)"
+        (@keydown)="(e: KeyboardEvent) => this.onUserKeyDown(e)"
+        class="custom">
+        <div *ngIf="isLoading" class="message-parent">
+            <div [aria-label]="loadingMessage" class="loading-text">
+              {{loadingMessage}}
+            </div>
+        </div>
+        <div *ngIf="!isLoading && people.length <= 0"  class="message-parent">
+            <div [aria-label]="noResultsFoundMessage" class="search-error-text">
+              {{noResultsFoundMessage}}
+            </div>
+        </div>
+        <div *ngIf="isLoading && people.length <= 0"  class="message-parent">
+            <div [aria-label]="noResultsFoundMessage" class="search-error-text">
+              {{noResultsFoundMessage}}
+            </div>
+        </div>
+        <ul
+            *ngIf="!isLoading && people.length > 0"
+            id="suggestions-list"
+            class="searched-people-list"
+            role="listbox"
+            aria-live="polite"
+            [title]="suggestionsTitle"
+        >
+        <li *ngFor="let person of people"
+            id="{{person.id}}"
+            role="option"
+            class="searched-people-list-result"
+            (click)="selectPerson(person)"
+        >
+            {{person.displayName}}
+        </li>
+        </ul>
+   </fluent-card>
+</div>

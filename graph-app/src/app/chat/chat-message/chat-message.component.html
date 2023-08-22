@@ -1,0 +1,25 @@
+<div class="chat-item-header" [class.chat-item-justify-right]="chatMessage.isMine" >
+    <div class="chat-item-header-authorname" *ngIf="!chatMessage.isMine">{{chatMessage.fromUserDisplayName}}</div>
+    <div class="chat-item-header-timestamp">{{chatMessage.createdDateTime | date: 'shortTime'}}</div>
+</div>
+<div class="chat-item-content" [class.chat-item-justify-right]="chatMessage.isMine" [class.message-pending]="!chatMessage.id" [class.message-error]="chatMessage.errors">
+    <div class="chat-item-content-avatar" *ngIf="chatMessage.fromUserId && !chatMessage.isMine;">
+        <mgt-person personQuery="{{chatMessage.fromUserId}}" person-card="hover"></mgt-person>
+    </div>
+    <div class="chat-item-content-body">
+        <div class="message" [class.my-message]="chatMessage.isMine">
+            <div>
+                <div class="message-content" [class.my-message-content]="chatMessage.isMine" >
+                    <div [innerHTML]="renderedChatMessage"></div>
+                    <div *ngIf="!chatMessage.sent" class="progress-bar">
+                        <div class="bar"></div>
+                    </div>
+                    
+                </div>                              
+
+            </div>
+        </div>
+    </div>
+</div>
+
+   
